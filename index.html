@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>1週間の3習慣</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="body">
+  <div class="main">
+    <div class="name">1週間の3習慣</div>
+    <div class="sub">1週間の生活の中で3つだけ意識して生活してみましょう!</div>
+    <div class="btn">
+      <div><input type="button" value="登録" id="save"></div>
+      <div><input type="button" value="削除" id="clear"></div>
+    </div>
+  </div>
+  <div class="form">
+    <table>
+
+      <tbody>
+        <!--テーブルタイトル-->
+        <tr>
+          <td class="theme">テーマ</td>
+          <td>目標</td>
+          <td>月</td>
+          <td>火</td>
+          <td>水</td>
+          <td>木</td>
+          <td>金</td>
+          <td>土</td>
+          <td>日</td>
+        </tr>
+        <tr>
+          <td class="theme">運動</td>
+          <td class="target">毎日腹筋50回する</td>
+          <div id="hukkin">
+            <td><input type="text" id="mon_1" class="input"></td>
+            <td><input type="text" id="tue_1" class="input"></td>
+            <td><input type="text" id="wed_1" class="input"></td>
+            <td><input type="text" id="thu_1" class="input"></td>
+            <td><input type="text" id="fri_1" class="input"></td>
+            <td><input type="text" id="sat_1" class="input"></td>
+            <td><input type="text" id="sun_1" class="input"></td>
+          </div>
+        </tr>
+        <tr>
+          <td class="theme">集中</td>
+          <td class="target">毎日3時間勉強する</td>
+          <td><input type="text" id="mon_2" class="input"></td>
+          <td><input type="text" id="tue_2" class="input"></td>
+          <td><input type="text" id="wed_2" class="input"></td>
+          <td><input type="text" id="thu_2" class="input"></td>
+          <td><input type="text" id="fri_2" class="input"></td>
+          <td><input type="text" id="sat_2" class="input"></td>
+          <td><input type="text" id="sun_2" class="input"></td>
+        </tr>
+        <tr>
+          <td class="theme">感情</td>
+          <td class="target">毎日ありがとうを10回言う</td>
+          <td><input type="text" id="mon_3" class="input"></td>
+          <td><input type="text" id="tue_3" class="input"></td>
+          <td><input type="text" id="wed_3" class="input"></td>
+          <td><input type="text" id="thu_3" class="input"></td>
+          <td><input type="text" id="fri_3" class="input"></td>
+          <td><input type="text" id="sat_3" class="input"></td>
+          <td><input type="text" id="sun_3" class="input"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--canvasタグ-->
+  <div class="chart">
+    <canvas id="myChart1"></canvas>
+    <canvas id="myChart2"></canvas>
+    <canvas id="myChart3"></canvas>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    $("#save").on("click", function () {
+      const mon_1 = $("#mon_1").val();
+      const mon_2 = $("#mon_2").val();
+      const mon_3 = $("#mon_3").val();
+      const tue_1 = $("#tue_1").val();
+      const tue_2 = $("#tue_2").val();
+      const tue_3 = $("#tue_3").val();
+      const wed_1 = $("#wed_1").val();
+      const wed_2 = $("#wed_2").val();
+      const wed_3 = $("#wed_3").val();
+      const thu_1 = $("#thu_1").val();
+      const thu_2 = $("#thu_2").val();
+      const thu_3 = $("#thu_3").val();
+      const fri_1 = $("#fri_1").val();
+      const fri_2 = $("#fri_2").val();
+      const fri_3 = $("#fri_3").val();
+      const sat_1 = $("#sat_1").val();
+      const sat_2 = $("#sat_2").val();
+      const sat_3 = $("#sat_3").val();
+      const sun_1 = $("#sun_1").val();
+      const sun_2 = $("#sun_2").val();
+      const sun_3 = $("#sun_3").val();
+      const data = {
+        mon_1: mon_1,
+        mon_2: mon_2,
+        mon_3: mon_3,
+        tue_1: tue_1,
+        tue_2: tue_2,
+        tue_3: tue_3,
+        wed_1: wed_1,
+        wed_2: wed_2,
+        wed_3: wed_3,
+        thu_1: thu_1,
+        thu_2: thu_2,
+        thu_3: thu_3,
+        fri_1: fri_1,
+        fri_2: fri_2,
+        fri_3: fri_3,
+        sat_1: sat_1,
+        sat_2: sat_2,
+        sat_3: sat_3,
+        sun_1: sun_1,
+        sun_2: sun_2,
+        sun_3: sun_3,
+      }
+      // console.log(data, "データの確認")
+      const jsondata = JSON.stringify(data);
+      // console.log(jsondata, "josndata変換確認")
+      localStorage.setItem("memo", jsondata);
+
+      // 変数にchart.jsを入れる
+      const ctx = document.getElementById("myChart1");
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["月", "火", "水", "木", "金", "土", "日"],
+          datasets: [{
+            label: "運動",
+            data: [mon_1, tue_1, wed_1, thu_1, fri_1, sat_1, sun_1],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+      const ctxy = document.getElementById("myChart2");
+
+      new Chart(ctxy, {
+        type: 'bar',
+        data: {
+          labels: ["月", "火", "水", "木", "金", "土", "日"],
+          datasets: [{
+            label: "集中",
+            data: [mon_2, tue_2, wed_2, thu_2, fri_2, sat_2, sun_2],
+            borderWidth: 1
+
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const ctxyz = document.getElementById("myChart3");
+
+      new Chart(ctxyz, {
+        type: 'bar',
+        data: {
+          labels: ["月", "火", "水", "木", "金", "土", "日"],
+          datasets: [{
+            label: "感情",
+            data: [mon_3, tue_3, wed_3, thu_3, fri_3, sat_3, sun_3],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+    })
+
+    $("#clear").on("click", function () {
+      const mon_1 = $("#mon_1").val("");
+      const mon_2 = $("#mon_2").val("");
+      const mon_3 = $("#mon_3").val("");
+      const tue_1 = $("#tue_1").val("");
+      const tue_2 = $("#tue_2").val("");
+      const tue_3 = $("#tue_3").val("");
+      const wed_1 = $("#wed_1").val("");
+      const wed_2 = $("#wed_2").val("");
+      const wed_3 = $("#wed_3").val("");
+      const thu_1 = $("#thu_1").val("");
+      const thu_2 = $("#thu_2").val("");
+      const thu_3 = $("#thu_3").val("");
+      const fri_1 = $("#fri_1").val("");
+      const fri_2 = $("#fri_2").val("");
+      const fri_3 = $("#fri_3").val("");
+      const sat_1 = $("#sat_1").val("");
+      const sat_2 = $("#sat_2").val("");
+      const sat_3 = $("#sat_3").val("");
+      const sun_1 = $("#sun_1").val("");
+      const sun_2 = $("#sun_2").val("");
+      const sun_3 = $("#sun_3").val("");
+      localStorage.removeItem("memo");
+
+
+    })
+
+    if (localStorage.getItem("memo")) {
+      const jsondata1 = localStorage.getItem("memo");
+      const data1 = JSON.parse(jsondata1);
+      $("#mon_1").val(data1.mon_1);
+      $("#mon_2").val(data1.mon_2);
+      $("#mon_3").val(data1.mon_3);
+      $("#tue_1").val(data1.tue_1);
+      $("#tue_2").val(data1.tue_2);
+      $("#tue_3").val(data1.tue_3);
+      $("#wed_1").val(data1.wed_1);
+      $("#wed_2").val(data1.wed_2);
+      $("#wed_3").val(data1.wed_3);
+      $("#thu_1").val(data1.thu_1);
+      $("#thu_2").val(data1.thu_2);
+      $("#thu_3").val(data1.thu_3);
+      $("#fri_1").val(data1.fri_1);
+      $("#fri_2").val(data1.fri_2);
+      $("#fri_3").val(data1.fri_3);
+      $("#sat_1").val(data1.sat_1);
+      $("#sat_2").val(data1.sat_2);
+      $("#sat_3").val(data1.sat_3);
+      $("#sun_1").val(data1.sun_1);
+      $("#sun_2").val(data1.sun_2);
+      $("#sun_3").val(data1.sun_3);
+    }
+
+  </script>
+
+</body>
+
+</html>

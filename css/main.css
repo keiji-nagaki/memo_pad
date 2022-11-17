@@ -1,0 +1,61 @@
+.body {
+    max-width: 960px;
+}
+
+.main {
+    background: url(../img/main.jpg);
+}
+
+.name {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 30px;
+
+}
+
+.sub {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+.form {
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.input {
+    width: 95%;
+    border: white;
+    text-align: center;
+}
+
+.theme {
+    width: 10%;
+}
+
+.target {
+    width: 20%;
+}
+
+
+table,
+td,
+th {
+    border: 1px solid #595959;
+    border-collapse: collapse;
+}
+
+.chart {
+    width: 960px;
+    height: 140px;
+    display: flex;
+    justify-content: space-evenly;
+}
