@@ -1,4 +1,4 @@
-#1週間の3週間
+#1週間の3習慣
 
 ##https://keiji-nagaki.github.io/memo_pad/
 

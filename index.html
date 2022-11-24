@@ -12,7 +12,7 @@
 <body class="body">
   <div class="main">
     <div class="name">1週間の3習慣</div>
-    <div class="sub">1週間の生活の中で3つだけ意識して生活してみましょう!</div>
+    <div class="sub">1週間だけ3つを習慣にして生活してみましょう!</div>
     <div class="btn">
       <div><input type="button" value="登録" id="save"></div>
       <div><input type="button" value="削除" id="clear"></div>
@@ -26,13 +26,13 @@
         <tr>
           <td class="theme">テーマ</td>
           <td>目標</td>
-          <td>月</td>
-          <td>火</td>
-          <td>水</td>
-          <td>木</td>
-          <td>金</td>
-          <td>土</td>
-          <td>日</td>
+          <td class="mon">月</td>
+          <td class="tue">火</td>
+          <td class="wed">水</td>
+          <td class="thu">木</td>
+          <td class="fri">金</td>
+          <td class="sat">土</td>
+          <td class="sun">日</td>
         </tr>
         <tr>
           <td class="theme">運動</td>
@@ -79,6 +79,10 @@
     <canvas id="myChart3"></canvas>
   </div>
 
+
+
+  </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -105,6 +109,9 @@
       const sun_1 = $("#sun_1").val();
       const sun_2 = $("#sun_2").val();
       const sun_3 = $("#sun_3").val();
+
+
+
       const data = {
         mon_1: mon_1,
         mon_2: mon_2,
@@ -143,7 +150,26 @@
           datasets: [{
             label: "運動",
             data: [mon_1, tue_1, wed_1, thu_1, fri_1, sat_1, sun_1],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(201, 203, 207, 0.2)'
+            ],
+            borderColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
+              'rgb(201, 203, 207)'
+            ],
             borderWidth: 1
+
           }]
         },
         options: {
@@ -153,6 +179,7 @@
             }
           }
         }
+
       });
 
 
@@ -165,6 +192,28 @@
           datasets: [{
             label: "集中",
             data: [mon_2, tue_2, wed_2, thu_2, fri_2, sat_2, sun_2],
+
+
+
+
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(201, 203, 207, 0.2)'
+            ],
+            borderColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
+              'rgb(201, 203, 207)'
+            ],
             borderWidth: 1
 
           }]
@@ -187,6 +236,24 @@
           datasets: [{
             label: "感情",
             data: [mon_3, tue_3, wed_3, thu_3, fri_3, sat_3, sun_3],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(201, 203, 207, 0.2)'
+            ],
+            borderColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
+              'rgb(201, 203, 207)'
+            ],
             borderWidth: 1
           }]
         },
@@ -253,6 +320,8 @@
       $("#sun_2").val(data1.sun_2);
       $("#sun_3").val(data1.sun_3);
     }
+
+
 
   </script>
 
